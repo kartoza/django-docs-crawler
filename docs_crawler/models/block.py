@@ -71,7 +71,7 @@ class Block(models.Model):
 
     @property
     def link(self):
-        """String of object."""
+        """Link of block."""
         from docs_crawler.models.preferences import Preferences
         return Preferences.preferences().documentation_base_url + self.url
 

@@ -40,7 +40,12 @@ class Page(models.Model):
 
     title = models.CharField(
         max_length=512,
-        help_text='Title that will be used on the page help center.'
+        null=True,
+        blank=True,
+        help_text=(
+            'If no title is provided, it will use the title of the anchor '
+            'on documentation page.'
+        )
     )
 
     intro = models.TextField(
@@ -49,6 +54,14 @@ class Page(models.Model):
         help_text=(
             'Help intro for this page help center, '
             'below title and upper of blocks.'
+        )
+    )
+
+    autogenerate_block = models.BooleanField(
+        default=True,
+        help_text=(
+            'Autogenerate blocks from the documentation. '
+            'If unchecked, it will use blocks child of this page.'
         )
     )
 
